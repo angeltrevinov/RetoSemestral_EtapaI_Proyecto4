@@ -77,29 +77,16 @@ public:
         Nodo<T> * pP = headA;
         Nodo<T> * pQ = headB;
         while(pP != NULL && pQ != NULL){
-            if(pQ -> data < pP -> data){ //este solo funciona si es el primero de la lista
-                pQ -> pSig = pP;
-            }else if(pQ -> data >= pP -> data ){ //funciona con todos los demas
+            if(pQ -> data >= pP -> data ){ //funciona con todos los demas
                 pQ -> pSig = pP -> pSig;
                 pP -> pSig = pQ;
+            }else if(pQ -> data < pP -> data){ //este solo funciona si es el primero de la lista
+                pQ -> pSig = pP;
             }
             pP = pP -> pSig;
             pQ = pQ -> pSig;
         }//ese es del while
         return headA;
-    }
-    
-    //operator+= (LinkedList<T> l) : Apendiza toda la info de la lista endadenada l, al final de la lista encadenada.
-    void operator+= (Lista <T> L){
-        Nodo <T> *pAux = pInicio; //sabes donde esta el ultimo nodo
-        Nodo <T> *pP = L.pInicio; // donde esta el primer nodo de la otra lista
-        while(pAux -> pSig != NULL){//coloca pAux, en la ultima posicion de la lista
-            pAux = pAux -> pSig;
-        }
-        while(pP != NULL){// va colocando uno por uno los datos de la lista L en la lista copy
-            insertaFinal(pP -> dato);
-            pP = pP -> pSig;
-        }
     }
 };
 
