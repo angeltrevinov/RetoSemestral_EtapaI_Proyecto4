@@ -9,30 +9,17 @@
 
 int main() {
     
-    Lista <int> L;
+    Lista <int> L; //primera lista
+    Lista <int> L2; //segunda lista
+    L.insertaInicio(8);
     L.insertaInicio(5);
     L.insertaInicio(2);
-    L.insertaInicio(8);
-    L.insertaFinal(3);
+    L.insertaInicio(3);
     L.muestra();
-    cout << "El tamaño es " << L.regresaTamanio() << endl;
-    /*L.borraInicio();
-     L.borraFinal();
-     L.muestra();*/
-    Lista <int> copy(L);
-    copy.muestra();
-    copy.reverse();
-    copy.Shift(-10);
-    copy.borraFinal();
-    if(copy.igual(L))
-        cout << "son iguales" <<endl;
-    else
-        cout << "son diferentes" <<endl;
-    copy.muestra();
-    copy.operator+=(L);
-    L.muestra();
-    copy.muestra();
-    //copy.deleteLista(3, 3); no me funciono
+    L2.insertaInicio(9);
+    L2.insertaInicio(7);
+    L2.insertaFinal(4);
+    L2.muestra();
     
     return 0;
 }
