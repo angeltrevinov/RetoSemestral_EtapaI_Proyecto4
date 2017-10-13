@@ -74,19 +74,27 @@ public:
     }
     
     Nodo<T>* MergeLists(Nodo<T> *headA, Nodo<T> *headB){
-        Nodo<T> * pP = headA;
-        Nodo<T> * pQ = headB;
-        while(pP != NULL && pQ != NULL){
-            if(pQ -> data >= pP -> data ){ //funciona con todos los demas
-                pQ -> pSig = pP -> pSig;
-                pP -> pSig = pQ;
-            }else if(pQ -> data < pP -> data){ //este solo funciona si es el primero de la lista
-                pQ -> pSig = pP;
-            }
-            pP = pP -> pSig;
-            pQ = pQ -> pSig;
-        }//ese es del while
-        return headA;
+        Node *pP = headA;
+        Node *pQ = headB;
+        Node *pTemp;
+        if((headA==NULL)&&(headB==NULL)){
+            return NULL;
+        }else if((headA!=NULL)&&(headB==NULL)){
+            return headA;
+        }else if((headA == NULL)&&(headB!=NULL)){
+            return headB;
+        }else{
+            while(pP != NULL && pQ != NULL){
+                pTemp = pQ;
+                if(pTemp -> data >= pP -> data ){ //funciona con todos los demas
+                    pTemp -> next = pP -> next = pTemp;
+                }else if(pTemp -> data < pP -> data){ //este solo funciona si es el primero de la lista
+                    pTemp -> next = pP;
+                }
+                pP = pP -> next;
+                pQ = pQ -> next;
+            }//ese es del while
+            return headA;
     }
 };
 
