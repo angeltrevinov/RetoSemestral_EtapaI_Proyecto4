@@ -1,9 +1,11 @@
-//
-//  ListasEncadenadas (Clase)
-//  Angel Odiel Treviño Villanueva
-//  A01336559
-//  Estructura de Datos
-
+/*
+    Angel Odiel Treviño Villanueva
+    A01336559
+    Estructura de Datos
+    Reto Semestral
+    MergeList
+    *NOTA: solo necesitas la funcion mergelist dentro de la clase lista, tambien tienes que cambiar nombre de las variables para que hackerrank te acepte.
+ */
 #include <iostream>
 #include "Lista.h"
 

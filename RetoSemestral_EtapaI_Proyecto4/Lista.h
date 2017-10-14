@@ -74,26 +74,22 @@ public:
     }
     
     Nodo<T>* MergeLists(Nodo<T> *headA, Nodo<T> *headB){
-        Node *pP = headA;
-        Node *pQ = headB;
-        Node *pTemp;
-        if((headA==NULL)&&(headB==NULL)){
+        Nodo<T> *pP; //esta es la temporar para mover los nodos
+        if((headA==NULL)&&(headB==NULL)){//estan vacios
             return NULL;
-        }else if((headA!=NULL)&&(headB==NULL)){
+        }else if((headA!=NULL)&&(headB==NULL)){//solo B esta vacio
             return headA;
-        }else if((headA == NULL)&&(headB!=NULL)){
+        }else if((headA == NULL)&&(headB!=NULL)){//solo A esta vacio
             return headB;
-        }else{
-            while(pP != NULL && pQ != NULL){
-                pTemp = pQ;
-                if(pTemp -> data >= pP -> data ){ //funciona con todos los demas
-                    pTemp -> next = pP -> next = pTemp;
-                }else if(pTemp -> data < pP -> data){ //este solo funciona si es el primero de la lista
-                    pTemp -> next = pP;
-                }
-                pP = pP -> next;
-                pQ = pQ -> next;
-            }//ese es del while
+        }else if(headA -> data < headB -> data){ // si el dato en A es menor que el dato B
+            headA -> pSig = MergeLists(headA -> pSig, headB);
+        }else if(headA -> data >= headB -> data){ //si el dato en A es mayor que el dato B
+            pP = headB;//pP apunta al head de la lista B
+            headB = headB-> pSig; //head de B se mueve al siguiente nodo
+            pP -> pSig = headA; //pP apuntara al head de la listaA
+            headA = pP; //headA se movera a pP
+            headA-> pSig = MergeLists(headA-> pSig, headB); // se hace recursivamente
+        }
             return headA;
     }
 };
